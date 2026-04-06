@@ -24,7 +24,8 @@ npm i @tensorflow/tfjs
 
 ## Data
 
-The data directory contains a local version of the Boston Housing dataset (all with the CSV format), which includes 12 features and 333 samples.
+The data directory contains a local version of the Boston Housing dataset (all with the CSV format), which includes 12 features and 333 samples. I wrote myself the CSV parsing inside
+the **loadData** method.
 
 I choose to normalize the data using the formula: (value − min_value) / (max_value − min_value). I don't use the book normalize function with the mean.
 
@@ -48,7 +49,7 @@ node src/example1.js
 
 ## Book result
 
- Final loss inside the Book at 23 with 50 units for the first layer ?
+Final loss inside the Book at 23 with 50 units for the first layer ?
 
 ## Stategies
 
@@ -89,4 +90,4 @@ The best loss achieved is 3.6, but it is possible to go below 2 by increasing th
 
 ## Comment
 
-I do not understand why, in the aforementioned book, the final loss is so high (23 with 50 units !), nor why the authors rely on external libraries to parse a simple .csv file ??
+I do not understand why, in the aforementioned book, the final loss is so high (23 with 50 units !), nor why the authors rely on external libraries to parse a simple .csv file ?
