@@ -20,7 +20,7 @@ npm i @tensorflow/tfjs
 
 (c) Alexandre Brillant
 
-# example1.js (Book result: Final loss at 23)
+# example1.js
 
 ## Data
 
@@ -44,9 +44,13 @@ or
 node src/example1.js
 ```
 
+## Book result
+
+ Final loss at 23.
+
 ## Stategies
 
-All strategies are configurable via this table:
+All my strategies are configurable via this table:
 
 ```javascript
 const strategies = [
@@ -70,7 +74,6 @@ Loss Result with {"maxUnits":5,"maxEpochs":100,"loss":"meanAbsoluteError","activ
 
 The best loss achieved is 3.6, but it is possible to go below 2 by increasing the number of epochs.
 
-## Analysis
+## Comment
 
 I do not understand why, in the aforementioned book, the final loss is so high (23), nor why the authors rely on external libraries to parse a .csv file—this seems unnecessary ??
-
