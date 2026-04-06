@@ -1,0 +1,27 @@
+{
+  "name": "tensorflow-examples",
+  "version": "1.0.0",
+  "description": "Rewrite of examples for tensorflow.js",
+  "keywords": [
+    "tensorflow.js",
+    "tensorflow"
+  ],
+  "homepage": "https://github.com/AlexandreBrillant/tensorflow-examples#readme",
+  "bugs": {
+    "url": "https://github.com/AlexandreBrillant/tensorflow-examples/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandreBrillant/tensorflow-examples.git"
+  },
+  "license": "ISC",
+  "author": "Alexandre Brillant",
+  "type": "module",
+  "main": "src/example1.js",
+  "scripts": {
+    "ex1": "node src/example1.js"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^4.22.0"
+  }
+}
