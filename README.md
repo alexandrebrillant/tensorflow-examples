@@ -64,7 +64,7 @@ const strategies = [
 ];
 ```
 
-It uses 5 units only.
+It uses 5 units only and the basic "sgd" optimizer.
 
 ## Result
 
