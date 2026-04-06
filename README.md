@@ -24,7 +24,7 @@ npm i @tensorflow/tfjs
 
 ## Data
 
-The data directory contains a local version of the Boston Housing dataset, which includes 12 features and 333 samples.
+The data directory contains a local version of the Boston Housing dataset (all with the CSV format), which includes 12 features and 333 samples.
 
 I choose to normalize the data using the formula: (value − min_value) / (max_value − min_value). I don't use the book normalize function with the mean.
 
