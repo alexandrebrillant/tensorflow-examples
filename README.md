@@ -27,7 +27,24 @@ npm i @tensorflow/tfjs
 The data directory contains a local version of the Boston Housing dataset (all with the CSV format), which includes 12 features and 333 samples. I wrote myself the CSV parsing inside
 the **loadData** method.
 
-I choose to normalize the data using the formula: (value − min_value) / (max_value − min_value). I don't use the book normalize function with the mean.
+I choose to normalize the data using the formula: (value − min_value) / (max_value − min_value). I don't use the book normalize function with the mean. This is a general
+normalizer for any tensor2d object.
+
+```javascript
+function normalizer( tensor2d ) {
+    const shape = tensor2d.shape;
+    const colCount = shape[1];
+    const normalisees = [];
+    for ( let i = 0; i < colCount; i++ ) {
+        const col = tensor2d.slice( [ 0, i ], [-1, 1 ] );
+        const minValue = col.min();
+        const maxValue = col.max();
+        const colNorm = ( col.sub( minValue ) ).div( maxValue.sub( minValue ) );
+        normalisees.push( colNorm );
+    }
+    return tf.concat( normalisees, 1);
+}
+```
 
 ## Goal
 
@@ -92,6 +109,6 @@ The best loss achieved is 3.6, but it is possible to go below 2 by increasing th
 
 Definitely, the choices proposed in the book were not optimal. Using a much more computationally expensive strategy, they achieved a loss of 23, which is double the worst performance of my example.
 
-It is possible that the normalization technique ha a significant impact ??, but it is surprising that the authors did not explore other approacdhes.
+It is possible that the normalization technique ha a significant impact ??, but it is surprising that the authors did not explore other approaches.
 
 
