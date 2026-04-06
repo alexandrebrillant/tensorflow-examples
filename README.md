@@ -6,7 +6,7 @@ I was not entirely satisfied with the examples and results obtained using the Te
 
 As a result, I decided to rewrite the examples from scratch using different strategies to see if better results could be achieved.
 
-You need to install tensoflow.js on your machine
+You need to install tensoflow.js (I used the simple one tfjs) on your machine
 
 ```bash
 npm i

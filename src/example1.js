@@ -32,7 +32,7 @@ function loadData() {
 
     files.forEach( 
         ( file ) => {
-            const content = readFileSync( "./data/" + file, "UTF-8" );
+            const content = readFileSync( "./data/boston/" + file, "UTF-8" );
             const tab = content.split( "\n" );
             data[ file ] = [];
             let col;
