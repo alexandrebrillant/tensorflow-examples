@@ -90,4 +90,8 @@ The best loss achieved is 3.6, but it is possible to go below 2 by increasing th
 
 ## Comment
 
-I do not understand why, in the aforementioned book, the final loss is so high (23 with 50 units !), nor why the authors rely on external libraries to parse a simple .csv file ?
+Definitely, the choices proposed in the book were not optimal. Using a much more computationally expensive strategy, they achieved a loss of 23, which is double the worst performance of my example.
+
+It is possible that the normalization technique had a significant impact ??, but it is surprising that the authors did not explore other approaches.
+
+
