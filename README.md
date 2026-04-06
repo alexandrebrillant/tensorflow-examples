@@ -88,10 +88,10 @@ Loss Result with {"maxUnits":5,"maxEpochs":100,"loss":"meanAbsoluteError","activ
 
 The best loss achieved is 3.6, but it is possible to go below 2 by increasing the number of epochs.
 
-## Comment
+## Conclusion
 
 Definitely, the choices proposed in the book were not optimal. Using a much more computationally expensive strategy, they achieved a loss of 23, which is double the worst performance of my example.
 
-It is possible that the normalization technique had a significant impact ??, but it is surprising that the authors did not explore other approaches.
+It is possible that the normalization technique ha a significant impact ??, but it is surprising that the authors did not explore other approacdhes.
 
 
