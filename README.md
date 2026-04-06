@@ -66,14 +66,23 @@ const strategies = [
 
 The result for this data is:
 
-Loss Result with {"maxUnits":1,"maxEpochs":100,"loss":"meanAbsoluteError","activation":"relu","optimizer":"sgd"} .... :11.703289031982422
-Loss Result with {"maxUnits":5,"maxEpochs":100,"loss":"meanAbsoluteError","activation":"relu","optimizer":"sgd"} .... :3.623922109603882
-Loss Result with {"maxUnits":5,"maxEpochs":100,"loss":"meanSquaredError","activation":"relu","optimizer":"sgd"} .... :19.283775329589844
-Loss Result with {"maxUnits":5,"maxEpochs":100,"loss":"meanAbsoluteError","activation":"sigmoid","optimizer":"sgd"} .... :6.683498382568359
-Loss Result with {"maxUnits":5,"maxEpochs":100,"loss":"meanAbsoluteError","activation":"relu","optimizer":"adam"} .... :9.521827697753906
+Loss Result with {"maxUnits":1,"maxEpochs":100,"loss":"meanAbsoluteError","activation":"relu","optimizer":"sgd"} .... :
+**11.703289031982422**
+
+Loss Result with {"maxUnits":5,"maxEpochs":100,"loss":"meanAbsoluteError","activation":"relu","optimizer":"sgd"} .... :
+**3.623922109603882**
+
+Loss Result with {"maxUnits":5,"maxEpochs":100,"loss":"meanSquaredError","activation":"relu","optimizer":"sgd"} .... :
+**19.283775329589844**
+
+Loss Result with {"maxUnits":5,"maxEpochs":100,"loss":"meanAbsoluteError","activation":"sigmoid","optimizer":"sgd"} .... :
+**6.683498382568359**
+
+Loss Result with {"maxUnits":5,"maxEpochs":100,"loss":"meanAbsoluteError","activation":"relu","optimizer":"adam"} .... :
+**9.521827697753906**
 
 The best loss achieved is 3.6, but it is possible to go below 2 by increasing the number of epochs.
 
 ## Comment
 
-I do not understand why, in the aforementioned book, the final loss is so high (23), nor why the authors rely on external libraries to parse a .csv file—this seems unnecessary ??
+I do not understand why, in the aforementioned book, the final loss is so high (23 with 50 units !), nor why the authors rely on external libraries to parse a .csv file—this seems unnecessary ??
