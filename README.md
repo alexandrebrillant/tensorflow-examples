@@ -53,7 +53,7 @@ Final loss inside the Book at 23 with 50 units for the first layer ?
 
 ## Stategies
 
-All my strategies are configurable via this table:
+All my strategies (the hyperparameters) are configurable via this table:
 
 ```javascript
 const strategies = [
@@ -65,7 +65,7 @@ const strategies = [
 ];
 ```
 
-It uses 5 units only and the basic "sgd" optimizer.
+It uses 5 units only and the basic "sgd" optimizer for the best result.
 
 ## Result
 
