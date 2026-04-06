@@ -26,11 +26,11 @@ npm i @tensorflow/tfjs
 
 The data directory contains a local version of the Boston Housing dataset, which includes 12 features and 333 samples.
 
+I choose to normalize the data using the formula: (value − min_value) / (max_value − min_value). I don't use the book normalize function with the mean.
+
 ## Goal
 
-I train a non-linear model with 2 layers using various strategies. The data is normalized using the formula:
-
-(value − min_value) / (max_value − min_value).
+I train a non-linear model with 2 layers using various strategies. 
 
 ## Run the example
 
@@ -46,7 +46,7 @@ node src/example1.js
 
 ## Book result
 
- Final loss at 23.
+ Final loss inside the Book at 23 with 50 units for the first layer ?
 
 ## Stategies
 
@@ -61,6 +61,8 @@ const strategies = [
     { maxUnits : 5, maxEpochs : 100, loss : "meanAbsoluteError", activation: "relu", optimizer : "adam" },  // Bad
 ];
 ```
+
+It uses 5 units only.
 
 ## Result
 
@@ -85,4 +87,4 @@ The best loss achieved is 3.6, but it is possible to go below 2 by increasing th
 
 ## Comment
 
-I do not understand why, in the aforementioned book, the final loss is so high (23 with 50 units !), nor why the authors rely on external libraries to parse a .csv file—this seems unnecessary ??
+I do not understand why, in the aforementioned book, the final loss is so high (23 with 50 units !), nor why the authors rely on external libraries to parse a simple .csv file ??
