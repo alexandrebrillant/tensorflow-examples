@@ -32,6 +32,8 @@ I choose to normalize the data using the formula: (value − min_value) / (max_v
 
 I train a non-linear model with 2 layers using various strategies. 
 
+The goal is to estimate the price for house using 12 features (crim,zn,indus,chas,nox,rm,age,dis,rad,tax,ptratio,lstat).
+
 ## Run the example
 
 ```bash
