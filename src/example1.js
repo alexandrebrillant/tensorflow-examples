@@ -56,18 +56,29 @@ function loadData() {
 }
 
 // normalize_value = (value − min_value) / (max_value − min_value)
-function normalizer( tensor2d ) {
+function normalizer( tensor2d, colValues ) {
     const shape = tensor2d.shape;
     const colCount = shape[1];
     const normalisees = [];
+    const lastColValues = [];
+
     for ( let i = 0; i < colCount; i++ ) {
         const col = tensor2d.slice( [ 0, i ], [-1, 1 ] );
-        const minValue = col.min();
-        const maxValue = col.max();
-        const colNorm = ( col.sub( minValue ) ).div( maxValue.sub( minValue ) );
+        const minValue = colValues ? colValues[ i ].minValue : col.min();
+        const maxValue = colValues ? colValues[ i ].maxValue : col.max();
+        const delta = maxValue.sub( minValue );
+        const colNorm = ( col.sub( minValue ) ).div( delta );
         normalisees.push( colNorm );
+        lastColValues.push( {
+            maxValue,
+            minValue
+        } );
     }
-    return tf.concat( normalisees, 1);
+
+    return {
+        tensor:tf.concat( normalisees, 1),
+        colValues:lastColValues
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -85,7 +96,9 @@ const tensorFlowRuntime = ( async ( strategy, logMode = false ) => {
         target : tf.tensor2d( bostonData.data[ "train-target.csv" ], bostonData.shape[ "train-target.csv" ] )
     };
 
-    trainTensors.data = normalizer( trainTensors.data );
+    const { tensor, colValues } = normalizer( trainTensors.data );
+
+    trainTensors.data = tensor;
 
     await model.fit( 
         trainTensors.data,
@@ -100,12 +113,13 @@ const tensorFlowRuntime = ( async ( strategy, logMode = false ) => {
             }
     } );
 
+
     const testTensors = {
         data : tf.tensor2d( bostonData.data[ "test-data.csv" ], bostonData.shape[ "test-data.csv"] ),
         target : tf.tensor2d( bostonData.data[ "test-target.csv" ], bostonData.shape[ "test-target.csv"] ),
     }
 
-    testTensors.data = normalizer( testTensors.data );
+    testTensors.data = normalizer( testTensors.data, colValues ).tensor;
     const loss = model.evaluate( testTensors.data, testTensors.target ).dataSync()[ 0 ];
 
     console.log( "Loss Result with " + JSON.stringify( strategy ) + " .... :" + loss.toString() );

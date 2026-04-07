@@ -27,23 +27,36 @@ npm i @tensorflow/tfjs
 The data directory contains a local version of the Boston Housing dataset (all with the CSV format), which includes 12 features and 333 samples. I wrote myself the CSV parsing inside
 the **loadData** method.
 
-I choose to normalize the data using the formula: (value − min_value) / (max_value − min_value). I don't use the book normalize function with the mean. This is a general
-normalizer for any tensor2d object.
+I choose to normalize the data using the formula: (value − min_value) / (max_value − min_value). I don't use the book normalize function with the mean. This is a general normalizer for any tensor2d object. 
+
+I added a second parameter colValues containing the max/min value for each column of the train data set to be sure to have the same normalization space.
 
 ```javascript
-function normalizer( tensor2d ) {
+function normalizer( tensor2d, colValues ) {
     const shape = tensor2d.shape;
     const colCount = shape[1];
     const normalisees = [];
+    const lastColValues = [];
+
     for ( let i = 0; i < colCount; i++ ) {
         const col = tensor2d.slice( [ 0, i ], [-1, 1 ] );
-        const minValue = col.min();
-        const maxValue = col.max();
-        const colNorm = ( col.sub( minValue ) ).div( maxValue.sub( minValue ) );
+        const minValue = colValues ? colValues[ i ].minValue : col.min();
+        const maxValue = colValues ? colValues[ i ].maxValue : col.max();
+        const delta = maxValue.sub( minValue );
+        const colNorm = ( col.sub( minValue ) ).div( delta );
         normalisees.push( colNorm );
+        lastColValues.push( {
+            maxValue,
+            minValue
+        } );
     }
-    return tf.concat( normalisees, 1);
+
+    return {
+        tensor:tf.concat( normalisees, 1),
+        colValues:lastColValues
+    }
 }
+
 ```
 
 ## Goal
