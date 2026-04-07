@@ -127,7 +127,7 @@ const tensorFlowRuntime = ( async ( strategy, logMode = false ) => {
 } );
 
 const strategies = [
-    { maxUnits : 1, maxEpochs : 100, loss : "meanAbsoluteError", activation: "relu", optimizer : "sgd" },  // Bad
+    { maxUnits : 1, maxEpochs : 100, loss : "meanAbsoluteError", activation: "relu", optimizer : "sgd" },  // Good
     { maxUnits : 5, maxEpochs : 100, loss : "meanAbsoluteError", activation: "relu", optimizer : "sgd" },  // Good
     { maxUnits : 5, maxEpochs : 100, loss : "meanSquaredError", activation: "relu", optimizer : "sgd" }, // Bad
     { maxUnits : 5, maxEpochs : 100, loss : "meanAbsoluteError", activation: "sigmoid", optimizer : "sgd" }, // Bad

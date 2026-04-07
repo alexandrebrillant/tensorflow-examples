@@ -102,7 +102,7 @@ It uses 5 units only and the basic "sgd" optimizer for the best result.
 The result for this data is:
 
 Loss Result with {"maxUnits":1,"maxEpochs":100,"loss":"meanAbsoluteError","activation":"relu","optimizer":"sgd"} .... :
-**11.703289031982422**
+**3.983289031982422**
 
 Loss Result with {"maxUnits":5,"maxEpochs":100,"loss":"meanAbsoluteError","activation":"relu","optimizer":"sgd"} .... :
 **3.623922109603882**
