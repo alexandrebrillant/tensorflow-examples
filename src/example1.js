@@ -1,6 +1,6 @@
 /**
  * Multiple strategies using TensorFlow.js
- * It uses local Boston data files with 12 features * 333 sample = 3996 data
+ * It uses local Boston House data files with 12 features * 333 sample => 3996 data
  * (c) Alexandre Brillant
  */
 
@@ -73,8 +73,7 @@ function normalizer( tensor2d ) {
 //////////////////////////////////////////////////////////////////////////////////////
 
 const tensorFlowRuntime = ( async ( strategy, logMode = false ) => {
-    const bostonData = await loadData();
-
+    const bostonData = loadData();
     const model = tf.sequential();
 
     model.add( tf.layers.dense( { inputShape : [12], units : strategy.maxUnits, activation: strategy.activation }) );
