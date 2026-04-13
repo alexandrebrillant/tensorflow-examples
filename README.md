@@ -8,6 +8,8 @@ As a result, I decided to rewrite the examples from scratch using different stra
 
 You need to install tensoflow.js (I used the simple one tfjs) on your machine
 
+Using this package :
+
 ```bash
 npm i
 ```
@@ -18,9 +20,9 @@ or directly
 npm i @tensorflow/tfjs
 ```
 
-(c) Alexandre Brillant
+(c) [Alexandre Brillant](https://www.alexandrebrillant.com)
 
-# example1.js
+# Prediction : example1.js
 
 ## Data
 
@@ -122,6 +124,6 @@ The best loss achieved is 3.6, but it is possible to go below 2 by increasing th
 
 Definitely, the choices proposed in the book were not optimal. Using a much more computationally expensive strategy, they achieved a loss of 23, which is double the worst performance of my example.
 
-It is possible that the normalization technique ha a significant impact ??, but it is surprising that the authors did not explore other approaches.
+It is possible that the normalization technique ha a significant impact ??.
 
 
