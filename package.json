@@ -19,7 +19,8 @@
   "type": "module",
   "main": "src/example1.js",
   "scripts": {
-    "ex1": "node src/example1.js"
+    "ex1": "node src/example1.js",
+    "ex2": "node src/example2.js"
   },
   "dependencies": {
     "@tensorflow/tfjs": "^4.22.0"

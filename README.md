@@ -4,7 +4,7 @@ While studying the book "Deep Learning with JavaScript" by Shanqing Cai, Stanley
 
 I was not entirely satisfied with the examples and results obtained using the TensorFlow.js library. 
 
-As a result, I decided to rewrite the examples from scratch using different strategies to see if better results could be achieved. I replaced too commonjs modules by a modern usage of the ES6 module. I removed all unnecessary dependencies (like the one for CSV format).
+As a result, I decided to rewrite the examples from scratch using different strategies to see if better results could be achieved. I replaced too commonjs modules by a modern usage of the ES6 modules. I removed all unnecessary dependencies (like the one for CSV format).
 
 You need to install tensoflow.js (I used the simple one tfjs) on your machine
 
@@ -125,5 +125,72 @@ The best loss achieved is 3.6, but it is possible to go below 2 by increasing th
 Definitely, the choices proposed in the book were not optimal. Using a much more computationally expensive strategy, they achieved a loss of 23, which is double the worst performance of my example.
 
 It is possible that the normalization technique ha a significant impact ??.
+
+
+# Binary classification : example2.js
+
+## Data
+
+The data directory contains a local version of the Phishing web site dataset (all with the CSV format), which includes 30 features and about 5000 samples. I wrote myself the CSV parsing inside the **loadData** method.
+
+We needn't to normalize data as this is a set of 0 or 1.
+
+## Goal
+
+I train a non-linear model with 2 layers using various strategies. 
+
+The goal is to classify a phishing or not web site using 30 features. We considere a label to 1 for "Yes this is a phishing
+web site" and the label to 0 for "No, this is not a phishing web site".
+
+## Run the example
+
+```bash
+npm run ex2
+```
+
+or 
+
+```bash
+node src/example2.js
+```
+
+## Stategies
+
+```javascript
+const strategies = [
+    { maxUnits : 10, maxEpochs : 100, loss : "binaryCrossentropy", activation: "sigmoid", optimizer : "adam", threshold:0.5 },
+    { maxUnits : 10, maxEpochs : 100, loss : "binaryCrossentropy", activation: "sigmoid", optimizer : "adam", threshold:0.6 },
+    { maxUnits : 10, maxEpochs : 100, loss : "binaryCrossentropy", activation: "sigmoid", optimizer : "adam", threshold:0.7 },
+    { maxUnits : 10, maxEpochs : 100, loss : "binaryCrossentropy", activation: "sigmoid", optimizer : "adam", threshold:0.8 }
+];
+```
+
+We use only the binaryCrossentropy which adds good or bad score depending on the prediction rate.
+
+When a result probability > theshold, then it means this is a label 1 and else this is a label 0. So each time we
+increase the threshold, we improve the precision of the prediction because we ask a very high probability.
+
+## Result
+
+The result are only for the Label 1 (phishing detection).
+
+Label 1 : Good prediction (97.64791025872988%) - Miss prediction (4.776551474579338%)
+Label 1 : Good prediction (97.90121223086665%) - Miss prediction (5.210783426813824%)
+Label 1 : Good prediction (98.91442011941378%) - Miss prediction (8.576081056631084%)
+Label 1 : Good prediction (100%) - Miss prediction (43.495567215487604%)
+Label 1 : Good prediction (99.6924190338339%) - Miss prediction (11.072914781979373%)
+
+=> High Precision (100% at threshold 0.7):
+
+The model only predicts "phishing" when it is almost certain.
+Pro: No false alarms (all predicted "phishing" sites are truly phishing).
+Con: Many actual phishing sites are missed (high missed prediction rate, e.g., 43%).
+
+Low Missed Predictions (Lower Threshold):
+
+The model predicts "phishing" more often, catching more actual phishing sites.
+Pro: Fewer missed phishing sites. Con: More false alarms (lower precision).
+
+There's no universal solution ! The choice depends on your priority
 
 

@@ -1,7 +1,10 @@
 /**
- * Multiple strategies using TensorFlow.js
+ * example1.js
+ * Multiple strategies prediction using TensorFlow.js
  * It uses local Boston House data files with 12 features * 333 sample => 3996 data
  * (c) Alexandre Brillant
+ * https://github.com/AlexandreBrillant/
+ * https://www.alexandrebrillant.com
  */
 
 import { readFileSync } from "fs";
