@@ -4,7 +4,7 @@ While studying the book "Deep Learning with JavaScript" by Shanqing Cai, Stanley
 
 I was not entirely satisfied with the examples and results obtained using the TensorFlow.js library. 
 
-As a result, I decided to rewrite the examples from scratch using different strategies to see if better results could be achieved.
+As a result, I decided to rewrite the examples from scratch using different strategies to see if better results could be achieved. I replaced too commonjs modules by a modern usage of the ES6 module. I removed all unnecessary dependencies (like the one for CSV format).
 
 You need to install tensoflow.js (I used the simple one tfjs) on your machine
 
@@ -14,7 +14,7 @@ Using this package :
 npm i
 ```
 
-or directly
+or directly :
 
 ```bash
 npm i @tensorflow/tfjs
