@@ -126,7 +126,7 @@ The best loss achieved is 3.6, but it is possible to go below 2 by increasing th
 
 Definitely, the choices proposed in the book were not optimal. Using a much more computationally expensive strategy, they achieved a loss of 23, which is double the worst performance of my example.
 
-It is possible that the normalization technique ha a significant impact ??.
+It is possible that the normalization technique has a significant impact ?.
 
 
 # Binary classification : example2.js
