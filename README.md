@@ -177,11 +177,11 @@ increase the threshold, we improve the precision of the prediction because we as
 The result are only for the Label 1 (phishing detection). Good prediction is a rate of quality when the
 model predicts a label 1. The Miss prediction is for the case the model predicts a label 0 for a label 1.
 
-- Label 1 : Good prediction (97.64791025872988%) - Miss prediction (4.776551474579338%)
-- Label 1 : Good prediction (97.90121223086665%) - Miss prediction (5.210783426813824%)
-- Label 1 : Good prediction (98.91442011941378%) - Miss prediction (8.576081056631084%)
-- Label 1 : Good prediction (100%) - Miss prediction (43.495567215487604%)
-- Label 1 : Good prediction (99.6924190338339%) - Miss prediction (11.072914781979373%)
+- Label 1 : Good prediction (97.64791025872988%) - Missed prediction (4.776551474579338%)
+- Label 1 : Good prediction (97.90121223086665%) - Missed prediction (5.210783426813824%)
+- Label 1 : Good prediction (98.91442011941378%) - Missed prediction (8.576081056631084%)
+- Label 1 : Good prediction (100%) - Missed prediction (43.495567215487604%)
+- Label 1 : Good prediction (99.6924190338339%) - Missed prediction (11.072914781979373%)
 
 => High Precision (100% at threshold 0.7):
 
