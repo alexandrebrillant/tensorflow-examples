@@ -77,8 +77,8 @@ console.log( "- Training data :" )
 console.log( rows + " samples with " + features + " features" );
 const label_1 = phishingData.data[ "train-target.csv" ].filter( item => item==1 ).length;
 const label_0 = phishingData.data[ "train-target.csv" ].filter( item => item==0 ).length;
-console.log( "Labels to 0 :" + label_0 + " items" );
-console.log( "Labels to 1 :" + label_1 + " items" );
+console.log( "- Labels to 0 :" + label_0 + " items" );
+console.log( "- Labels to 1 :" + label_1 + " items" );
 
 const features2 = phishingData.shape[ "test-data.csv"][1];
 const rows2 = phishingData.shape[ "test-data.csv"][0];
@@ -87,8 +87,8 @@ console.log( "- Testing data :" )
 console.log( rows2 + " samples with " + features2 + " features" );
 const label_12 = phishingData.data[ "test-target.csv" ].filter( item => item==1 ).length;
 const label_02 = phishingData.data[ "test-target.csv" ].filter( item => item==0 ).length;
-console.log( "Labels to 0 :" + label_02 + " items" );
-console.log( "Labels to 1 :" + label_12 + " items" );
+console.log( "- Labels to 0 :" + label_02 + " items" );
+console.log( "- Labels to 1 :" + label_12 + " items" );
 
 console.log( "-------------------------------------" )
 console.log( "Running binary classification..." )
@@ -126,26 +126,22 @@ const tensorFlowRuntime = async ( strategy, logMode = false ) => {
     const predictionsArray = predictions.dataSync();
     const targetArray = testTensors.target.dataSync()
 
-    let totalWrongPrediction = 0;
-    let totalMissPrediction = 0;
 
-    for (let i = 0; i < predictionsArray.length; i++) {
-        if ( predictionsArray[i] == 1 ) {
-            if ( predictionsArray[i]!= targetArray[i] )
-                totalWrongPrediction++;
+    const { totalMissPrediction, totalWrongPrediction } = predictionsArray.reduce( ( acc, prediction, index ) => {
+        if ( prediction == 1 && prediction != targetArray[ index ] )
+            acc.totalWrongPrediction++;
+        if ( targetArray[ index ] == 1 && prediction != 1 ) {
+            acc.totalMissPrediction++;
         }
-
-        if ( targetArray[i] ==1 ) {
-            if ( predictionsArray[i] != 1 )
-                totalMissPrediction++;
-        }
-    }
+        return acc;
+    }, { totalWrongPrediction:0, totalMissPrediction:0 } );
 
     const goodPrediction = ( 1 - ( totalWrongPrediction / predictionsArray.length ) ) * 100;
     const missPrediction = ( totalMissPrediction  / predictionsArray.length ) * 100;
 
-    console.log( "Label 1 : Good prediction (" + goodPrediction + "%) - Miss prediction (" + missPrediction + "%)" );
-
+    console.log( "-------------------------------------" );
+    console.log( JSON.stringify( strategy ) );
+    console.log( "Label 1 : Good prediction (" + goodPrediction + "%) - Missed prediction (" + missPrediction + "%)" );
 };
 
 const strategies = [
