@@ -196,4 +196,86 @@ Pro: Fewer missed phishing sites. Con: More false alarms (lower precision).
 
 There's no universal solution ! The choice depends on your priority
 
+# Multi-class classification : example3.js
+
+## Data
+
+The data directory contains a dataset for the iris flowers.
+
+There're 4 features for detecting the following flowers :
+
+Iris-setosa
+Iris-versicolor
+Iris-virginica
+
+Each flower is used as an array with 3 columns :
+
+Iris-setosa : [1,0,0]
+Iris-versicolor : [0,1,0]
+Iris-virginica : [0,0,1]
+
+Each column is a probability (so 1 is for 100%).
+
+## Goal
+
+Be able to detect a flower from 4 features.
+
+## Run the example
+
+```bash
+npm run ex3
+```
+
+or 
+
+```bash
+node src/example3.js
+```
+
+## Stategies
+
+```javascript
+const strategies = [
+    { maxUnits : 100, maxEpochs : 500, loss : "categoricalCrossentropy", activation: "sigmoid", optimizer : "adam" },
+    { maxUnits : 10, maxEpochs : 250, loss : "categoricalCrossentropy", activation: "sigmoid", optimizer : "adam" },
+    { maxUnits : 100, maxEpochs : 250, loss : "categoricalCrossentropy", activation: "relu", optimizer : "adam" },
+    { maxUnits : 10, maxEpochs : 500, loss : "categoricalCrossentropy", activation: "relu", optimizer : "adam" }
+];
+```
+
+The "categoricalCrossentropy" is required for a multi-class problem. Here we have 3 labels for 3 flowers.
+
+# Result
+
+We displayed both the total accuracy and the accuracy by flower for each strategy. You may run several times for comparing the results.
+
+```javascript
+{"maxUnits":100,"maxEpochs":500,"loss":"categoricalCrossentropy","activation":"sigmoid","optimizer":"adam"}
+Total Accuracy =98%
+- Flower Iris-setosa Accuracy = 100 %
+- Flower Iris-versicolor Accuracy = 100 %
+- Flower Iris-virginica Accuracy = 96 %
+--------------------------------------------
+{"maxUnits":10,"maxEpochs":250,"loss":"categoricalCrossentropy","activation":"sigmoid","optimizer":"adam"}
+Total Accuracy =68%
+- Flower Iris-setosa Accuracy = 100 %
+- Flower Iris-versicolor Accuracy = 100 %
+- Flower Iris-virginica Accuracy = 65 %
+--------------------------------------------
+{"maxUnits":100,"maxEpochs":250,"loss":"categoricalCrossentropy","activation":"relu","optimizer":"adam"}
+Total Accuracy =98%
+- Flower Iris-setosa Accuracy = 100 %
+- Flower Iris-versicolor Accuracy = 100 %
+- Flower Iris-virginica Accuracy = 73 %
+--------------------------------------------
+{"maxUnits":10,"maxEpochs":500,"loss":"categoricalCrossentropy","activation":"relu","optimizer":"adam"}
+Total Accuracy =97%
+- Flower Iris-setosa Accuracy = 100 %
+- Flower Iris-versicolor Accuracy = 100 %
+- Flower Iris-virginica Accuracy = 77 %
+```
+
+The relu activation for the first layer is good enough. The sigmoid usage from the book is not necessary.
+10 neurons is enough too for the first layer.
+
 
