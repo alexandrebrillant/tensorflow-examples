@@ -239,7 +239,8 @@ const strategies = [
     { maxUnits : 100, maxEpochs : 500, loss : "categoricalCrossentropy", activation: "sigmoid", optimizer : "adam" },
     { maxUnits : 10, maxEpochs : 250, loss : "categoricalCrossentropy", activation: "sigmoid", optimizer : "adam" },
     { maxUnits : 100, maxEpochs : 250, loss : "categoricalCrossentropy", activation: "relu", optimizer : "adam" },
-    { maxUnits : 10, maxEpochs : 500, loss : "categoricalCrossentropy", activation: "relu", optimizer : "adam" }
+    { maxUnits : 10, maxEpochs : 500, loss : "categoricalCrossentropy", activation: "relu", optimizer : "adam" },
+    { maxUnits : 10, maxEpochs : 500, loss : "categoricalCrossentropy", activation: "tanh", optimizer : "adam" }
 ];
 ```
 
@@ -273,6 +274,11 @@ Total Accuracy =97%
 - Flower Iris-setosa Accuracy = 100 %
 - Flower Iris-versicolor Accuracy = 100 %
 - Flower Iris-virginica Accuracy = 77 %
+{"maxUnits":10,"maxEpochs":500,"loss":"categoricalCrossentropy","activation":"tanh","optimizer":"adam"}
+Total Accuracy =98%
+- Flower Iris-setosa Accuracy = 100 %
+- Flower Iris-versicolor Accuracy = 96 %
+- Flower Iris-virginica Accuracy = 100 %
 ```
 
 The relu activation for the first layer is good enough. The sigmoid usage from the book is not necessary.

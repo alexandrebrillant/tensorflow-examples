@@ -167,7 +167,8 @@ const strategies = [
     { maxUnits : 100, maxEpochs : 500, loss : "categoricalCrossentropy", activation: "sigmoid", optimizer : "adam" },
     { maxUnits : 10, maxEpochs : 250, loss : "categoricalCrossentropy", activation: "sigmoid", optimizer : "adam" },
     { maxUnits : 100, maxEpochs : 250, loss : "categoricalCrossentropy", activation: "relu", optimizer : "adam" },
-    { maxUnits : 10, maxEpochs : 500, loss : "categoricalCrossentropy", activation: "relu", optimizer : "adam" }
+    { maxUnits : 10, maxEpochs : 500, loss : "categoricalCrossentropy", activation: "relu", optimizer : "adam" },
+    { maxUnits : 10, maxEpochs : 500, loss : "categoricalCrossentropy", activation: "tanh", optimizer : "adam" }
 ];
 
 strategies.forEach( 
