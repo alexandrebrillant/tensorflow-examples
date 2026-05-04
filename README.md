@@ -284,4 +284,135 @@ Total Accuracy =98%
 The relu activation for the first layer is good enough. The sigmoid usage from the book is not necessary.
 10 neurons is enough too for the first layer.
 
+# Convolution for MNIST : example4.js
+
+## Data
+
+The MNIST Data is a 60000 28x28 images for training and 10000 28x28 images for testing. Each
+image is a number between 0 to 9. So a label is this number.
+
+The data base used a ubyte specific format for storing each image and label.
+
+## Goal
+
+Be able to detect the number that this drawn inside an image.
+
+## Run the example
+
+```bash
+npm run ex4
+```
+
+or 
+
+```bash
+node src/example4.js
+```
+
+Important note : Running the MNIST data base is a high cost for the CPU. So it is recommanded to
+switch from
+
+```javascript
+import tf from '@tensorflow/tfjs';
+```
+
+to
+
+```javascript
+import tf from '@tensorflow/tfjs-node';
+```
+
+or better if you have a GPU
+
+```javascript
+import tf from '@tensorflow/tfjs-node-gpu';
+```
+
+Note that for ARM (my cpu here), you can't switch to tfjs-node or tfjs-node-gpu.
+
+I have added a limitSize parameter if you use tfjs only. Else you must use
+
+```javascript
+const limitSize = Number.MAX_SAFE_INTEGER;
+```
+
+For running on the whole MNIST database.
+
+## Stategies
+
+```javascript
+{ 
+    kernelSize:2,
+    filters:8,
+    units:32
+},
+{ 
+    kernelSize:3,
+    filters:16,
+    units:64
+},
+{ 
+    kernelSize:3,
+    filters:32,
+    units:64
+},
+{ 
+    kernelSize:3,
+    filters:32,
+    units:128
+},
+{ 
+    kernelSize:3,
+    filters:64,
+    units:64
+},    
+{ 
+    kernelSize:2,
+    filters:32,
+    units:64
+},       
+{ 
+    kernelSize:4,
+    filters:32,
+    units:64
+}
+```
+
+I have limited the model to one convolution layer for performance reason. 
+
+## Result
+
+The training/evaluation here is only with 1000 images, so it impacts the accuracy rate.
+I didn't set too the epochs parameter for performance.
+
+```javascript
+{"kernelSize":2,"filters":8,"units":32}
+Loss : 2.100555896759033 / Accuracy : 40.50%
+Evaluating...
+================================
+{"kernelSize":3,"filters":16,"units":64}
+Loss : 1.7298730611801147 / Accuracy : 62.10%
+Evaluating...
+================================
+{"kernelSize":3,"filters":32,"units":64}
+Loss : 1.7157704830169678 / Accuracy : 52.60%
+Evaluating...
+================================
+{"kernelSize":3,"filters":32,"units":128}
+Loss : 1.5706546306610107 / Accuracy : 56.00%
+Evaluating...
+================================
+{"kernelSize":3,"filters":64,"units":64}
+Loss : 1.6900482177734375 / Accuracy : 53.20%
+Evaluating...
+================================
+{"kernelSize":2,"filters":32,"units":64}
+Loss : 1.820560097694397 / Accuracy : 48.10%
+Evaluating...
+================================
+{"kernelSize":4,"filters":32,"units":64}
+Loss : 1.6055097579956055 / Accuracy : 56.80%
+```
+
+It seems there's no a big impact for the filter around 16, and for the units of the complex layer around 64.
 

@@ -21,7 +21,8 @@
   "scripts": {
     "ex1": "node src/example1.js",
     "ex2": "node src/example2.js",
-    "ex3": "node src/example3.js"
+    "ex3": "node src/example3.js",
+    "ex4": "node src/example4.js"
   },
   "dependencies": {
     "@tensorflow/tfjs": "^4.22.0"
